@@ -38,6 +38,13 @@ def copy_files(todir, filepaths):
     shutil.copy(filepath, os.path.abspath(todir))
   return
 
+#zips the list of files to given zip files
+def zip_files(tozip, todir):
+  cmd = 'zip -j '+ tozip + ' ' +  ' '.join(get_special_files(todir))
+  print cmd
+  (status, output) = commands.getstatusoutput(cmd)
+  print output
+
 def main():
   # This basic command line argument parsing code is provided.
   # Add code to call your functions below.
@@ -75,8 +82,7 @@ def main():
     copy_files(todir,sp_filepaths)
   
   if tozip:
-    print (tozip)
-    #zip_files(sp_filepaths)
+    zip_files(tozip, args[0])
   
 if __name__ == "__main__":
   main()
