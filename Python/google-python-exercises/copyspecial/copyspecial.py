@@ -70,6 +70,13 @@ def main():
   # Call your functions
   directories = args 
   sp_filepaths = get_special_files(directories)
-  copy_files(todir,sp_filepaths)
+  
+  if todir:
+    copy_files(todir,sp_filepaths)
+  
+  if tozip:
+    print (tozip)
+    #zip_files(sp_filepaths)
+  
 if __name__ == "__main__":
   main()
